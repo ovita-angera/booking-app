@@ -1,5 +1,5 @@
 # booking-app
-<<<<<<< HEAD
+BOOKING APP
 This is a command line application that simulates a ticket booking application.
 It has great inspiration from the youtube course Golang Tutorial for Beginners | Full Go Course (https://www.youtube.com/watch?v=yyUHQIec83I). 
 The code implements several golang coding principles and even extends to indicate the functionality of several modules in the same application. It is a good blue print to start from in order to undestand and even grow a sample UI in time (a work in progress). 
