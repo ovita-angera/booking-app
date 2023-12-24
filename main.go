@@ -3,7 +3,6 @@ package main
 // import the required packages for the booking logic
 import (
 	// a module within our program
-	bookticket "booking-app/book_ticket"
 	getinput "booking-app/get_input"
 	sendticket "booking-app/send_ticket"
 	validateinput "booking-app/validate_input"
@@ -22,9 +21,16 @@ This makes sure all the functions under this main package have access to these v
 */
 const conferenceName string = "Go Conference"
 
+type UserData struct {
+	FirstName       string
+	LastName        string
+	Email           string
+	NumberOfTickets uint
+}
+
 var conferenceTickets uint = 50
 var remainingTickets uint = 50
-var bookings = make([]bookticket.UserData, 0)
+var bookings = make([]UserData, 0)
 
 /*
 Define a data structure which can hold values of different types
@@ -44,19 +50,20 @@ func main() {
 		isValidName, isValidEmail, isValidTickets := validateinput.ValidateUserInput(firstName, lastName, email, userTickets, remainingTickets)
 
 		if isValidEmail && isValidName && isValidTickets {
-			bookticket.BookTicket(bookings, firstName, lastName, email, userTickets)
+			BookTicket(firstName, lastName, email, userTickets)
 			sendticket.SendTicket(firstName, lastName, email, userTickets)
 
-			firstNames := bookticket.GetFirstNames(bookings)
+			firstNames := GetFirstNames()
+			fmt.Printf("Bookings: %v\n", bookings)
 			fmt.Printf("The first names of the bookings are: %v\n", firstNames)
+
+			remainingTickets = remainingTickets - userTickets
 
 			// condition to end the program
 			if remainingTickets == 0 {
 				fmt.Printf("The %v conference is totally booked out, try again next year.\n", conferenceName)
 				break
 			}
-
-			remainingTickets = remainingTickets - userTickets
 
 		} else {
 			if !isValidName {
@@ -71,6 +78,24 @@ func main() {
 				fmt.Printf("There are only %v tickets available, you booked %v tickets.\n", remainingTickets, userTickets)
 			}
 		}
-		fmt.Printf("Bookings: %v\n", bookings)
 	}
+}
+
+// This function extracts the first names of the bookings and returns a list of the first names
+func GetFirstNames() []string {
+	firstNames := []string{}
+	for _, booking := range bookings {
+		firstNames = append(firstNames, booking.FirstName)
+	}
+	return firstNames
+}
+
+// This function executes the booking ticket logic
+func BookTicket(firstName string, lastName string, email string, userTickets uint) {
+	bookings = append(bookings, UserData{
+		FirstName:       firstName,
+		LastName:        lastName,
+		Email:           email,
+		NumberOfTickets: userTickets,
+	})
 }
