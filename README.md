@@ -1,4 +1,5 @@
 # booking-app
+<<<<<<< HEAD
 This is a command line application that simulates a ticket booking application.
 It has great inspiration from the youtube course Golang Tutorial for Beginners | Full Go Course (https://www.youtube.com/watch?v=yyUHQIec83I). 
 The code implements several golang coding principles and even extends to indicate the functionality of several modules in the same application. It is a good blue print to start from in order to undestand and even grow a sample UI in time (a work in progress). 
@@ -16,3 +17,12 @@ The application logic is pretty straightforward:
      e. The app prints out information on the bookings, such as the first names and number of remaining tickets
 
 The app implements use of `structs`, in this case `userData`.
+=======
+This is a CLI application developed as I coded along `Golang Tutorial for Beginners | Full Go Course` by TechWorld with Nana.
+The course encompassed core aspects of golang that include the following:
+- Variable definition
+- Functions definition
+- Use of modules, such as the helper function in this code base
+
+The basic functionality logic for the command line application constructed in this module is pretty straighforward.
+>>>>>>> ef3f733 (Break the logic)
