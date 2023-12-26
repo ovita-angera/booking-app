@@ -1,6 +1,8 @@
 package validateinput
 
-import "strings"
+import (
+	"strings"
+)
 
 /*
 This function is built specifically to check the validity of input data with the following criteria:
@@ -14,7 +16,7 @@ func ValidateUserInput(firstName string, lastName string, email string, userTick
 	var isValidEmail bool
 	var isValidTickets bool
 
-	if len(firstName) >= 2 && len(lastName) >= 2 {
+	if validateName(firstName) && validateName(lastName) {
 		isValidName = true
 	}
 
@@ -27,4 +29,11 @@ func ValidateUserInput(firstName string, lastName string, email string, userTick
 	}
 
 	return isValidName, isValidEmail, isValidTickets
+}
+
+func validateName(name string) bool {
+	size := len(name) >= 2
+	number := !strings.ContainsAny(name, "0123456789")
+
+	return size && number
 }
