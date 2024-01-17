@@ -17,7 +17,6 @@ The application logic is pretty straightforward:
      e. The app prints out information on the bookings, such as the first names and number of remaining tickets
 
 The app implements use of `structs`, in this case `userData`.
-=======
 This is a CLI application developed as I coded along `Golang Tutorial for Beginners | Full Go Course` by TechWorld with Nana.
 The course encompassed core aspects of golang that include the following:
 - Variable definition
